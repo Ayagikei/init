@@ -1,2 +1,43 @@
 
-apply from: "https://gitee.com/ezy/gradle/raw/master/build-library-kotlin.gradle"
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
+apply plugin: 'maven-publish'
+apply plugin: "com.jfrog.bintray"
+
+group=LIBRARY_GROUP
+version=LIBRARY_VERSION
+archivesBaseName=name
+
+println(" =====>>>>> $group:$archivesBaseName:$version")
+
+
+dependencies {
+    api "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+}
+
+//bintray {
+//    user = BINTRAY_USER
+//    key = BINTRAY_KEY
+//    publications = ['library']  // 指定出版物
+//    publish = true
+//
+//    pkg {
+//        repo = "repo"                     // 发布到 Bintray 上的仓库名
+//        name = "$group:$archivesBaseName" // 发布到 Bintray 上的项目名
+//        licenses = ['Apache-2.0']
+//        vcsUrl = 'https://github.com/czy1121/gradle-bintray-plugin.git'
+//    }
+//}
+//
+//publishing {
+//    publications {
+//        library(MavenPublication) {
+//            from components.java
+//        }
+//    }
+//    repositories {
+//        maven {
+//            url = LOCAL_REPO_PATH
+//        }
+//    }
+//}
