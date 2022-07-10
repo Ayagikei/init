@@ -77,9 +77,9 @@ class TaskManager(private val taskList: TaskList, triggers: Set<String> = setOf(
         val time = measureTimeMillis {
             try {
                 task.block()
-            } catch (e: Exception) {
-                log("===> ${task.name} ERROR : $e")
-                e.printStackTrace()
+            } catch (t: Throwable) {
+                log("===> ${task.name} ERROR : $t")
+                t.printStackTrace()
             }
         }
         log("===> ${task.name} DONE : ${time}ms")
