@@ -32,10 +32,5 @@ internal fun Context.isDebuggable(): Boolean = try {
 
 internal fun Context.resolveCurrentProcessName(): String? {
     val pid = Process.myPid()
-    (getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager).runningAppProcesses?.forEach {
-        if (it.pid == pid) {
-            return it.processName
-        }
-    }
-    return null
+    return ProcessUtil.getCurrentProcessName(this)
 }
